@@ -1,0 +1,13 @@
+{
+  "index_name": "index",
+  "start_urls": ["https://cactus-search.paulapplegate.com"],
+  "selectors": {
+	"lvl0": "#header h1",
+	"lvl1": "#article h1",
+	"lvl2": "#section h3",
+	"lvl3": "#section h4",
+	"lvl4": "#section h5",
+	"lvl5": "#section h6",
+	"text": "#content header p,#content section p,#content section ol"
+  }
+}

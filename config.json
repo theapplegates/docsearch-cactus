@@ -1,5 +1,5 @@
 {
-  "index_name": "index",
+  "index_name": "astro-docs",
   "start_urls": ["https://cactus-search.paulapplegate.com"],
   "selectors": {
 	"lvl0": "#header h1",

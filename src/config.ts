@@ -36,9 +36,9 @@ export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-	indexName: 'index',
-	appId: '49HAAM4TWZ',
-	apiKey: 'fc907d3738c875525d6bbcd791010b9e',
+	indexName: 'cactus',
+	appId: 'LMIA09K0EW',
+	apiKey: '45bc20c9eccd6ff952f21aa9954b1ad6',
 };
 
 export type Sidebar = Record<

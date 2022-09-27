@@ -1,13 +1,89 @@
 {
-  "index_name": "astro-docs",
-  "start_urls": ["https://cactus-search.paulapplegate.com/en/introduction"],
-  "selectors": {
-	"lvl0": "#header h1",
-	"lvl1": "#article h1",
-	"lvl2": "#section h3",
-	"lvl3": "#section h4",
-	"lvl4": "#section h5",
-	"lvl5": "#section h6",
-	"text": "#content header p,#content section p,#content section ol"
-  }
-}
+appId: 'X0BFWD33OR',
+  apiKey: 'db688cc91e569f177808c155b1d633b4',
+  indexPrefix: 'crawler_',
+  rateLimit: 8,
+  maxDepth: 10,
+  startUrls: ['https://cactus-search.paulapplegate.com/en/introduction'],
+  renderJavaScript: false,
+  sitemaps: [],
+  ignoreCanonicalTo: false,
+  discoveryPatterns: ['https://cactus-search.paulapplegate.com/en/introduction/**'],
+  actions: [
+    {
+      indexName: 'astro-docs',
+      pathsToMatch: ['https://cactus-search.paulapplegate.com/en/introduction/**'],
+      recordExtractor: ({ helpers }) => {
+        return helpers.docsearch({
+          recordProps: {
+            lvl1: ['header h1', 'article h1', 'main h1', 'h1', 'head > title'],
+            content: ['article p, article li', 'main p, main li', 'p, li'],
+            lvl0: {
+              selectors: '',
+              defaultValue: 'Documentation',
+            },
+            lvl2: ['article h2', 'main h2', 'h2'],
+            lvl3: ['article h3', 'main h3', 'h3'],
+            lvl4: ['article h4', 'main h4', 'h4'],
+            lvl5: ['article h5', 'main h5', 'h5'],
+            lvl6: ['article h6', 'main h6', 'h6'],
+          },
+          aggregateContent: true,
+          recordVersion: 'v3',
+        });
+      },
+    },
+  ],
+  initialIndexSettings: {
+    astro-docs: {
+      attributesForFaceting: ['type', 'lang'],
+      attributesToRetrieve: [
+        'hierarchy',
+        'content',
+        'anchor',
+        'url',
+        'url_without_anchor',
+        'type',
+      ],
+      attributesToHighlight: ['hierarchy', 'content'],
+      attributesToSnippet: ['content:10'],
+      camelCaseAttributes: ['hierarchy', 'content'],
+      searchableAttributes: [
+        'unordered(hierarchy.lvl0)',
+        'unordered(hierarchy.lvl1)',
+        'unordered(hierarchy.lvl2)',
+        'unordered(hierarchy.lvl3)',
+        'unordered(hierarchy.lvl4)',
+        'unordered(hierarchy.lvl5)',
+        'unordered(hierarchy.lvl6)',
+        'content',
+      ],
+      distinct: true,
+      attributeForDistinct: 'url',
+      customRanking: [
+        'desc(weight.pageRank)',
+        'desc(weight.level)',
+        'asc(weight.position)',
+      ],
+      ranking: [
+        'words',
+        'filters',
+        'typo',
+        'attribute',
+        'proximity',
+        'exact',
+        'custom',
+      ],
+      highlightPreTag: '<span class="algolia-docsearch-suggestion--highlight">',
+      highlightPostTag: '</span>',
+      minWordSizefor1Typo: 3,
+      minWordSizefor2Typos: 7,
+      allowTyposOnNumericTokens: false,
+      minProximity: 1,
+      ignorePlurals: true,
+      advancedSyntax: true,
+      attributeCriteriaComputedByMinProximity: true,
+      removeWordsIfNoResults: 'allOptional',
+    },
+  },
+});}

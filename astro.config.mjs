@@ -10,5 +10,5 @@ export default defineConfig({
 		// Enable React for the Algolia search component.
 		react(),
 	],
-	site: `https://cactus-search.paulapplegate.com`,
+	site: `https://cactus-search.paulapplegate.com/en/introduction`,
 });

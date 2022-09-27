@@ -4,15 +4,15 @@ new Crawler({
   indexPrefix: 'astro-docs_',
   rateLimit: 8,
   maxDepth: 10,
-  startUrls: ['https://cactus-search.paulapplegate.com'],
+  startUrls: ['https://cactus-search.paulapplegate.com/en/introduction'],
   renderJavaScript: false,
   sitemaps: [],
   ignoreCanonicalTo: false,
-  discoveryPatterns: ['https://cactus-search.paulapplegate.com/**'],
+  discoveryPatterns: ['https://cactus-search.paulapplegate.com/en/introduction/**'],
   actions: [
     {
       indexName: 'astro-docs',
-      pathsToMatch: ['https://cactus-search.paulapplegate.com/**'],
+      pathsToMatch: ['https://cactus-search.paulapplegate.com/en/introduction/**'],
       recordExtractor: ({ helpers }) => {
         return helpers.docsearch({
           recordProps: {
